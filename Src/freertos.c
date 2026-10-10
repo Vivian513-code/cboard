@@ -50,6 +50,7 @@
 osThreadId defaultTaskHandle;
 osThreadId PlotterTaskHandle;
 osThreadId CanTaskHandle;
+osThreadId ImuTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -59,6 +60,7 @@ osThreadId CanTaskHandle;
 void StartDefaultTask(void const * argument);
 extern void plotter_task(void const * argument);
 extern void can_task(void const * argument);
+extern void imu_task(void const * argument);
 
 extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -118,9 +120,11 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(CanTask, can_task, osPriorityLow, 0, 256);
   CanTaskHandle = osThreadCreate(osThread(CanTask), NULL);
 
-  /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
-  /* USER CODE END RTOS_THREADS */
+ /* USER CODE BEGIN RTOS_THREADS */
+/* add threads, ... */
+osThreadDef(ImuTask, imu_task, osPriorityLow, 0, 256);
+ImuTaskHandle = osThreadCreate(osThread(ImuTask), NULL);
+/* USER CODE END RTOS_THREADS */
 
 }
 

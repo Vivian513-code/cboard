@@ -47,10 +47,17 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     applications/plotter_task.cpp
     sp_middleware/io/plotter/plotter.cpp
-
-    applications/can_task.cpp # <- 添加这一行
-    sp_middleware/io/can/can.cpp # <- 添加这一行
-    sp_middleware/motor/rm_motor/rm_motor.cpp # <- 添加这一行
+applications/can_task.cpp
+applications/plotter_task.cpp
+applications/imu_task.cpp
+       sp_middleware/io/plotter/plotter.cpp
+    sp_middleware/io/can/can.cpp
+    sp_middleware/io/dbus/dbus.cpp
+    sp_middleware/io/bmi088/bmi088.cpp
+    sp_middleware/io/buzzer/buzzer.cpp
+    sp_middleware/motor/rm_motor/rm_motor.cpp
+    sp_middleware/tools/mahony/mahony.cpp
+    sp_middleware/tools/math_tools/math_tools.cpp
 )
 
 # Add include paths
